@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("../fonts/Poppins/Poppins-Regular.ttf");
+}
+
+body{
+    font-family: "Poppins";
+}
+
+#loginContainer{
+    height: 100vh;
+    background-image: url("../images/bg_1.jpg");
+    background-repeat: no-repeat;
+}

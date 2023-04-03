@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ActivityOnDocumentController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\LoginRecordsController;
+use App\Http\Controllers\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LoginController::class, 'front'])->name('front');
+
+// Login 
+Route::post('/login', [LoginController::class, 'login'])->name('login');
