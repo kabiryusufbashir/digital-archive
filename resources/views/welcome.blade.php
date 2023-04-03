@@ -11,11 +11,12 @@
         <div id="loginContainer">
             <!-- Login Div  -->
             <div class="sm:w-1/3 sm:mx-auto relative top-24 py-24 px-5 bg-white rounded shadow-md">
+                
+                <div class="pb-3 px-24">
+                    <h2 class="border-b border-green-400 text-center text-2xl mb-4">Digital Archive</h2>
+                </div>
                 <div class="text-lg text-black">
                     @include('layouts.messages')
-                </div>
-                <div class="pb-3">
-                    <h2 class="border-b border-green-400 text-center text-2xl mb-4">Digial Archive</h2>
                 </div>
                 <div class="px-6">
                     <form action="{{ route('login') }}" method="POST">
@@ -36,7 +37,7 @@
                             <span><a href="#" class="hover:text-blue-600 hover:underline">Forgot your Password?</a></span>
                         </div>
                         <div class="text-center">
-                            <button class="text-lg mx-auto bg-gradient-to-r from-green-800 via-green-500 to-green-800 rounded-full w-full py-3 text-white tracking-wider">LOGIN</button>
+                            <button class="text-lg mx-auto bg-green-800 rounded-full w-full py-3 text-white tracking-wider">LOGIN</button>
                         </div>
                     </form>
                 </div>

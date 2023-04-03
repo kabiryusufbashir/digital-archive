@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\LoginRecordsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,6 @@ Route::get('/', [LoginController::class, 'front'])->name('front');
 
 // Login 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+// Dashboard 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
