@@ -33,5 +33,6 @@ Route::get('/category', [CategoryController::class, 'categories'])->name('catego
 //Category
 Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('add-categories')->middleware('auth:web');
 Route::post('/add-category', [CategoryController::class, 'store'])->name('add-category')->middleware('auth:web');
-Route::get('/edit-category', [CategoryController::class, 'edit'])->name('category-edit')->middleware('auth:web');
-Route::get('/delete-category', [CategoryController::class, 'delete'])->name('category-delete')->middleware('auth:web');
+Route::get('/edit-category/{category}/edit', [CategoryController::class, 'edit'])->name('category-edit')->middleware('auth:web');
+Route::patch('/update-category/{category}/edit', [CategoryController::class, 'update'])->name('category-update')->middleware('auth:web');
+Route::delete('/delete-category/{category}', [CategoryController::class, 'delete'])->name('category-delete')->middleware('auth:web');

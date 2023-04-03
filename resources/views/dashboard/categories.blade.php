@@ -6,7 +6,7 @@
 
 @section('page-section')
     <!-- Categories  -->
-    <div class="w-full bg-white p-6">
+    <div class="w-full bg-white p-6 rounded-lg">
         @if(count($categories) > 0)
             <div class="pb-3 px-24">
                 <h2 class="text-center text-2xl">All Categories</h2>
@@ -17,6 +17,7 @@
                         <!-- Main Columns  -->
                         <tr class="text-left whitespace-nowrap">
                             <th>Category</th>
+                            <th>Status</th>
                             @if(Auth::user()->category == 1)
                                 <th>Action</th>
                             @endif
@@ -28,6 +29,9 @@
                             <tr class="text-left">
                                 <td>
                                     {{ $item->name }}
+                                </td>
+                                <td>
+                                    {{ $item->status }}
                                 </td>
                                 @if(Auth::user()->category == 1)
                                     <!-- Action  -->
