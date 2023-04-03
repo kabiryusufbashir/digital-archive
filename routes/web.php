@@ -31,6 +31,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:web');
 Route::get('/category', [CategoryController::class, 'categories'])->name('categories')->middleware('auth:web');
 Route::get('/users', [UserController::class, 'users'])->name('users')->middleware('auth:web');
+Route::get('/documents', [DocumentController::class, 'documents'])->name('documents')->middleware('auth:web');
 
 //Category
 Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('add-categories')->middleware('auth:web');
@@ -46,4 +47,9 @@ Route::get('/edit-user/{user}/edit', [UserController::class, 'edit'])->name('use
 Route::patch('/update-user/{user}/edit', [UserController::class, 'update'])->name('user-update')->middleware('auth:web');
 Route::delete('/delete-user/{user}', [UserController::class, 'delete'])->name('user-delete')->middleware('auth:web');
 
-
+//Document
+Route::get('/add-document', [DocumentController::class, 'addDocument'])->name('add-document')->middleware('auth:web');
+Route::post('/add-document', [DocumentController::class, 'store'])->name('add-document')->middleware('auth:web');
+Route::get('/edit-document/{document}/edit', [DocumentController::class, 'edit'])->name('document-edit')->middleware('auth:web');
+Route::patch('/update-document/{document}/edit', [DocumentController::class, 'update'])->name('document-update')->middleware('auth:web');
+Route::delete('/delete-document/{document}', [DocumentController::class, 'delete'])->name('document-delete')->middleware('auth:web');

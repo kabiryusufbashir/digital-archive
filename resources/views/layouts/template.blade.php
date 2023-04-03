@@ -17,6 +17,7 @@
                 <hr>
                 <!-- Nav Links  -->
                 <div id="nav" class="bg-white  text-black w-full">
+                    <!-- Home  -->
                     <div id="homeNav" class="py-4 border-b cursor-pointer flex justify-between px-6">
                         <a class="flex justify-between w-full" href="{{ route('dashboard') }}">
                             <div>Home</div>
@@ -41,27 +42,21 @@
                             </div>
                         </a>
                     </div>
-                    <!-- End of Department  -->
+                    <!-- End of Category  -->
 
                     <!-- Document  -->
                     <div id="docNav" class="py-4 border-b cursor-pointer flex justify-between px-6">
                         <div>Document</div>
                         <div><i class="text-black fas fa-folder"></i></div>
                     </div>
-                    <div id="docBody" class="hidden lg:bg-green-700">
-                        <div id="newDirectory" class="py-4 border-b cursor-pointer flex justify-between px-6">
-                            <div>Create Directory</div>
-                        </div>
-                        <a href="#">
-                            <div id="allDirectories" class="py-4 border-b cursor-pointer flex justify-between px-6">
-                                <div>All Directories</div>
+                    <div id="docBody" class="hidden ml-4">
+                        <a href="{{ route('add-document') }}">
+                            <div class="py-4 border-b cursor-pointer flex justify-between px-6">
+                                <div>Upload Document</div>
                             </div>
                         </a>
-                        <div id="newDoc" class="py-4 border-b cursor-pointer flex justify-between px-6">
-                            <div>Upload Document</div>
-                        </div>
-                        <a href="#">
-                            <div id="allDoc" class="py-4 border-b cursor-pointer flex justify-between px-6">
+                        <a href="{{ route('documents') }}">
+                            <div class="py-4 border-b cursor-pointer flex justify-between px-6">
                                 <div>All Documents</div>
                             </div>
                         </a>
@@ -107,6 +102,7 @@
                 @yield('page-section')
             </div>
         </div>
+
         <script>
             //category Module
             let categoryNav = document.querySelector('#categoryNav')
@@ -133,6 +129,20 @@
                     }
                 })
             //End of User
+            
+            //Document Module
+            let docNav = document.querySelector('#docNav')
+            let docBody = document.querySelector('#docBody')
+                // Doc Nav 
+                docNav.addEventListener('click', ()=>{
+                    if(docBody.classList.contains('hidden')){
+                        docBody.classList.remove('hidden')
+                    }else{
+                        docBody.classList.add('hidden')
+                    }
+                })
+            //End of Document
+
         </script>
     </body>
 </html>
