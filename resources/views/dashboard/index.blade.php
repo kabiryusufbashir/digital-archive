@@ -8,7 +8,7 @@
     <!-- App Stats -->
     <div class="grid grid-cols-3 gap-4 py-6 rounded-lg text-center">
         <div class="bg-white py-7 px-6 mr-4 text-gray-600 rounded">
-            <a href="#">
+            <a href="{{ route('categories') }}">
                 <div class="flex py-2 items-center">
                     <span class="mr-4">
                         <div class="bg-yellow-300 p-2 rounded-full">
@@ -18,7 +18,7 @@
                     <span class="text-sm">
                         <div class="font-semibold mb-1">Categories</div>
                         <div>
-                            0
+                            {{ $category_count }}
                         </div>
                     </span>
                 </div>
@@ -35,7 +35,7 @@
                     <span class="text-sm">
                         <div class="font-semibold mb-1">Documents</div>
                         <div>
-                            0
+                            {{ $document_count }}
                         </div>
                     </span>
                 </div>
@@ -52,7 +52,7 @@
                     <span class="text-sm">
                         <div class="font-semibold mb-1">Users</div>
                         <div>
-                            0
+                            {{ $user_count }}
                         </div>
                     </span>
                 </div>

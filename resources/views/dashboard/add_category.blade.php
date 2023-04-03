@@ -18,14 +18,14 @@
             @csrf
             <div>
                 <label for="name" class="text-lg font-medium">Category Name</label><br>
-                <input type="text" name="name" value="{{old('name')}}" placeholder="Category Name" class="border-gray-300 rounded py-4 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                <input type="text" name="name" value="{{old('name')}}" placeholder="Category Name" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
                 @error('name')
                 {{$message}}
                 @enderror
             </div>     
             <div>
                 <label for="status" class="text-lg font-medium">Category Status</label><br>
-                <select type="text" name="status" value="{{old('status')}}" class="border-gray-300 rounded py-4 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                <select type="text" name="status" value="{{old('status')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
                     <option></option>
                     <option value="Active">Active</option>
                     <option value="Not Active">Not Active</option>

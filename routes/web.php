@@ -8,6 +8,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\LoginRecordsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Dashboard 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:web');
 Route::get('/category', [CategoryController::class, 'categories'])->name('categories')->middleware('auth:web');
+Route::get('/users', [UserController::class, 'users'])->name('users')->middleware('auth:web');
 
 //Category
 Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('add-categories')->middleware('auth:web');
@@ -36,3 +38,12 @@ Route::post('/add-category', [CategoryController::class, 'store'])->name('add-ca
 Route::get('/edit-category/{category}/edit', [CategoryController::class, 'edit'])->name('category-edit')->middleware('auth:web');
 Route::patch('/update-category/{category}/edit', [CategoryController::class, 'update'])->name('category-update')->middleware('auth:web');
 Route::delete('/delete-category/{category}', [CategoryController::class, 'delete'])->name('category-delete')->middleware('auth:web');
+
+//User
+Route::get('/add-user', [UserController::class, 'addUser'])->name('add-user')->middleware('auth:web');
+Route::post('/add-user', [UserController::class, 'store'])->name('add-user')->middleware('auth:web');
+Route::get('/edit-user/{user}/edit', [UserController::class, 'edit'])->name('user-edit')->middleware('auth:web');
+Route::patch('/update-user/{user}/edit', [UserController::class, 'update'])->name('user-update')->middleware('auth:web');
+Route::delete('/delete-user/{user}', [UserController::class, 'delete'])->name('user-delete')->middleware('auth:web');
+
+

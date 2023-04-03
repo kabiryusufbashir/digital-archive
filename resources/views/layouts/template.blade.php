@@ -69,15 +69,19 @@
                     <!-- End of Document  -->
 
                     <!-- User  -->
-                    <div id="staffNav" class="py-4 border-b cursor-pointer flex justify-between px-6">
+                    <div id="userNav" class="py-4 border-b cursor-pointer flex justify-between px-6">
                         <div>Users</div>
                         <div><i class="text-black  fas fa-users"></i></div>
                     </div>
-                    <div id="staffBody" class="hidden lg:bg-green-700">
-                        <div id="newStaff" class="py-4 border-b cursor-pointer flex justify-between px-6">
-                            <div>New User</div>
-                        </div>
-                        <a href="#">
+                    <div id="userBody" class="hidden ml-4">
+                        
+                        <a href="{{ route('add-user') }}">
+                            <div class="py-4 border-b cursor-pointer flex justify-between px-6">
+                                <div>Add User</div>
+                            </div>
+                        </a>
+
+                        <a href="{{ route('users') }}">
                             <div class="py-4 border-b cursor-pointer flex justify-between px-6">
                                 <div>Users</div>
                             </div>
@@ -85,6 +89,7 @@
                     </div>
                     <!-- End of User  -->
 
+                    <!-- Logout  -->
                     <div class="py-4 border-b cursor-pointer flex justify-between px-6">
                         <div>Logout</div>
                         <form action="{{ route('logout') }}" method="POST">
@@ -114,7 +119,20 @@
                         categoryBody.classList.add('hidden')
                     }
                 })
-            //end of category
+            //End of category
+            
+            //User Module
+            let userNav = document.querySelector('#userNav')
+            let userBody = document.querySelector('#userBody')
+                // user Nav 
+                userNav.addEventListener('click', ()=>{
+                    if(userBody.classList.contains('hidden')){
+                        userBody.classList.remove('hidden')
+                    }else{
+                        userBody.classList.add('hidden')
+                    }
+                })
+            //End of User
         </script>
     </body>
 </html>
