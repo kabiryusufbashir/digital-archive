@@ -12,3 +12,30 @@ body{
     background-image: url("../images/bg_2.jpg");
     background-repeat: no-repeat;
 }
+
+#appContainer{
+    width: 100%;
+    float: left;
+}
+
+#appNav{
+    width: 20%;
+    float: left;
+    height: 100vh;
+}
+
+#appMenu{
+    width: 76%;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+#nav .fas{
+    font-size: 20px;
+}
+
+#nav{
+    font-size: 14px;
+}

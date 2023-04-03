@@ -24,6 +24,14 @@ Route::get('/', [LoginController::class, 'front'])->name('front');
 
 // Login 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:web');
+Route::get('/category', [CategoryController::class, 'categories'])->name('categories')->middleware('auth:web');
+
+//Category
+Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('add-categories')->middleware('auth:web');
+Route::post('/add-category', [CategoryController::class, 'store'])->name('add-category')->middleware('auth:web');
+Route::get('/edit-category', [CategoryController::class, 'edit'])->name('category-edit')->middleware('auth:web');
+Route::get('/delete-category', [CategoryController::class, 'delete'])->name('category-delete')->middleware('auth:web');
