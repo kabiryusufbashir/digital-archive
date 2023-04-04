@@ -24,7 +24,7 @@ class LoginController extends Controller
         try{
             if(Auth::attempt(['name' => $request->username, 'password' => $request->password])){
                 try{
-                    $user_status = User::where('name', $request->username)->where('status', 'Admin')->count();
+                    $user_status = User::where('name', $request->username)->where('status', 'Active')->count();
                         if($user_status == 1){
                             $request->session()->regenerate();
                             $user_id = User::select('id')->where('name', $request->username)->first();

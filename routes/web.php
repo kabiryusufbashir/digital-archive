@@ -31,7 +31,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:web');
 Route::get('/category', [CategoryController::class, 'categories'])->name('categories')->middleware('auth:web');
 Route::get('/users', [UserController::class, 'users'])->name('users')->middleware('auth:web');
-Route::get('/documents', [DocumentController::class, 'documents'])->name('documents')->middleware('auth:web');
+Route::get('/archive', [DocumentController::class, 'documents'])->name('documents')->middleware('auth:web');
 
 //Category
 Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('add-categories')->middleware('auth:web');
