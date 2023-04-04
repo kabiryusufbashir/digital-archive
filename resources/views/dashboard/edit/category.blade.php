@@ -31,8 +31,8 @@
                         <option value="Active">Active</option>
                         <option value="Not Active">Not Active</option>
                     @else
-                        <option value="Active">Active</option>
                         <option value="Not Active">Not Active</option>
+                        <option value="Active">Active</option>
                     @endif    
                 </select>
                 @error('status')

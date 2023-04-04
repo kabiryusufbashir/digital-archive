@@ -88,17 +88,20 @@ class DocumentController extends Controller
 
     public function edit($id){
         $document = Document::findOrFail($id);
-        return view('dashboard.edit.document', compact('document'));
+        $categories = Category::orderby('name', 'asc')->get();
+        return view('dashboard.edit.document', compact('document', 'categories'));
     }
 
     public function update(Request $request, $id){
         $data = $request->validate([
             'name' => ['required'],
             'status' => ['required'],
+            'category' => ['required'],
         ]);
 
         $name = $data['name'];
         $status = $data['status'];
+        $category = $data['category'];
 
         $check = Document::where('name', $name)->where('status', $status)->get();
         
@@ -107,6 +110,7 @@ class DocumentController extends Controller
                 Document::where('id', $id)->update([
                     'name' => $data['name'],
                     'status' => $data['status'],
+                    'category_id' => $data['category'],
                 ]);
                 return redirect()->route('documents')->with('success', 'Document Updated');
             }catch(Exception $e){
