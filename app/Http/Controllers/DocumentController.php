@@ -46,7 +46,7 @@ class DocumentController extends Controller
                 try{
                     // Upload Document Content 
                     foreach ($request->file('doc_path') as $file) {
-                        $path = time().str_replace(' ', '', $file->getClientOriginalName());
+                        $path = '/assets/documents/'.time().str_replace(' ', '', $file->getClientOriginalName());
                         $file->move('assets/documents/', $path);
     
                         // Add to Database 
@@ -91,6 +91,12 @@ class DocumentController extends Controller
         $document = Document::findOrFail($id);
         $categories = Category::orderby('name', 'asc')->get();
         return view('dashboard.edit.document', compact('document', 'categories'));
+    }
+
+    public function show($id){
+        $document = Document::findOrFail($id);
+        $document_contents = Documentimage::where('document_id', $id)->get();
+        return view('dashboard.show.document', compact('document', 'document_contents'));
     }
 
     public function update(Request $request, $id){

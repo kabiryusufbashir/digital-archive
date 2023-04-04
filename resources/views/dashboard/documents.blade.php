@@ -31,7 +31,9 @@
                         @foreach($documents as $item)
                             <tr class="text-left border-b">
                                 <td>
-                                    {{ $item->name }}
+                                    <a href="{{ route('document-show', $item->id) }}">
+                                        {{ $item->name }}
+                                    </a>
                                 </td>
                                 <td>
                                     {{ $item->docCategory($item->category_id) }}
