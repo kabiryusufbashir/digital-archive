@@ -51,6 +51,9 @@
                 {{$message}}
                 @enderror
             </div>     
+            <input type="text" value="{{ $document->name }}" name="old_name" class="hidden">
+            <input type="text" value="{{ $document->status }}" name="old_status" class="hidden">
+            <input type="text" value="{{ $document->category_id }}" name="old_category" class="hidden">
             <div class="text-center">
                 <button class="mx-auto bg-green-800 rounded w-full py-3 text-white tracking-wider">Update Document</button>
             </div>

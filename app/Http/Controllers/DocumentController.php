@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Document;
 use App\Models\Documentimage;
+use App\Models\Activityondocument;
 
 class DocumentController extends Controller
 {
@@ -102,6 +103,13 @@ class DocumentController extends Controller
         $name = $data['name'];
         $status = $data['status'];
         $category = $data['category'];
+        $upload_by = Auth::user()->id;
+
+        $old_name = $request->old_name;
+        $old_status = $request->old_status;
+        $old_category = $request->old_category;
+
+        $activity_on_document = 'Former name: '.$old_name.', new name: '.$name.'. Former status: '.$old_status.', new status '.$status.' Former Category: '.$old_category.', New Category: '.$category;
 
         $check = Document::where('name', $name)->where('status', $status)->get();
         
@@ -112,7 +120,21 @@ class DocumentController extends Controller
                     'status' => $data['status'],
                     'category_id' => $data['category'],
                 ]);
-                return redirect()->route('documents')->with('success', 'Document Updated');
+
+                try{
+                    $stamp = new Activityondocument([
+                        'user_id' => $upload_by,
+                        'document_id' => $id,
+                        'activity_carried' => $activity_on_document,
+                    ]);
+    
+                    $stamp->save();
+
+                    return redirect()->route('documents')->with('success', 'Document Updated');
+                }catch(Exception $e){
+                    return back()->with('error', 'Please try again... '.$e);
+                }
+
             }catch(Exception $e){
                 return back()->with('error', 'Please try again... '.$e);
             }
