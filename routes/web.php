@@ -48,10 +48,10 @@ Route::patch('/update-user/{user}/edit', [UserController::class, 'update'])->nam
 Route::delete('/delete-user/{user}', [UserController::class, 'delete'])->name('user-delete')->middleware('auth:web');
 
 //Document
+Route::get('/search', [DocumentController::class, 'search'])->name('search');
 Route::get('/add-document', [DocumentController::class, 'addDocument'])->name('add-document')->middleware('auth:web');
 Route::post('/add-document', [DocumentController::class, 'store'])->name('add-document')->middleware('auth:web');
 Route::get('/edit-document/{document}/edit', [DocumentController::class, 'edit'])->name('document-edit')->middleware('auth:web');
 Route::get('/document/{document}/view', [DocumentController::class, 'show'])->name('document-show')->middleware('auth:web');
 Route::patch('/update-document/{document}/edit', [DocumentController::class, 'update'])->name('document-update')->middleware('auth:web');
 Route::delete('/delete-document/{document}', [DocumentController::class, 'delete'])->name('document-delete')->middleware('auth:web');
-

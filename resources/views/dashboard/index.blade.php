@@ -8,8 +8,8 @@
     <!-- Search Box  -->
     <div>
         <form action="" class="my-1 flex w-1/2 ml-auto">
-            <input type="text" class="form-control py-3 px-10 rounded-tl-full rounded-bl-full" name="search_document" placeholder="Search Document" id="search_document">
-            <input type="submit" class="mx-auto bg-green-800 py-2 px-3 text-white tracking-wider" value="Search" name="search_document_submit" id="search_document">
+            <input id="search-box" type="text" class="form-control py-3 px-10 rounded-tl-full rounded-bl-full" name="search_document" placeholder="Search Document" id="search_document">
+            <input type="submit" class="mx-auto bg-green-800 py-2 px-3 text-white tracking-wider" value="Search" name="search_document_submit" id="search">
         </form>
     </div>
     <!-- App Stats -->
@@ -66,4 +66,67 @@
             </a>
         </div>
     </div>
+    <script type="text/javascript">
+        var path = "{{ route('search') }}";
+        $("#search" ).autocomplete({
+            source: function(request,response ) {
+            $.ajax({
+                url: path,
+                type: 'GET',
+                dataType: "json",
+                data: {
+                    search: request.term
+                },
+                success: function( data ) {
+                    console.log('Yes')
+                    response( data );
+                }
+            });
+            },
+            select: function (event, ui) {
+            $('#search').val(ui.item.label);
+            console.log(ui.item); 
+            return false;
+            }
+        });
+    
+    </script>
+    <script>
+        // let searchBox = document.getElementById('search-box');
+        // let searchResults = document.getElementById('search-results');
+
+
+        
+        // searchBox.addEventListener('keyup', function () {
+            
+        //     const query = this.value;
+            
+        //     if(query.length > 2){
+        //         $.ajax({
+        //             url: `/search?query=${query}`,
+        //             method: 'GET',
+        //             dataType: 'json'
+        //             })
+        //             .then(function(data) {
+        //                 console.log(data);
+        //                 if(data.length > 0){
+        //                     data.forEach(doc => {
+        //                         const li = document.createElement('li');
+        //                         li.innerText = doc.name;
+        //                         searchResults.appendChild(li);
+        //                     })
+        //                 }else{
+        //                     searchResults.innerHTML = '';
+        //                     const li = document.createElement('li');
+        //                     li.innerText = 'Document Not Found';
+        //                     searchResults.appendChild(li);
+        //                 }
+        //             })
+        //             .catch(function(error) {
+        //                 console.error(error);
+        //             });
+        //     }    
+            
+        // });
+    </script>
 @endsection 

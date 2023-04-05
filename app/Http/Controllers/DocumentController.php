@@ -71,6 +71,16 @@ class DocumentController extends Controller
 
     }
 
+    public function search(Request $request)
+    {
+
+        $data = Document::select("name as value", "id")
+                    ->where('name', 'LIKE', '%'. $request->get('search'). '%')
+                    ->get();
+    
+        return response()->json($data);
+    }
+
     public function documents(){
         $documents = Document::orderby('name', 'asc')->paginate(15);
         return view('dashboard.documents', compact('documents'));
