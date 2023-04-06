@@ -7,7 +7,7 @@
 @section('page-section')
     <!-- Search Box  -->
     <div>
-        <form name="autocomplete-textbox" id="autocomplete-textbox" method="post" action="" class="my-1 flex w-1/2 ml-auto">
+        <form name="autocomplete-textbox" id="autocomplete-textbox" method="post" action="{{ route('search') }}" class="my-1 flex w-1/2 ml-auto">
             @csrf
             <input id="name" name="name" type="text" class="form-control py-3 px-10" placeholder="Search Document">
             <input type="submit" class="mx-auto bg-green-800 py-2 px-3 text-white tracking-wider" value="Search" name="search_document_submit" id="search">
@@ -70,7 +70,6 @@
     <script>
         $(document).ready(function() {
             $( "#name" ).autocomplete({
-        
                 source: function(request, response) {
                     $.ajax({
                         url: siteUrl + '/' +"autocomplete",
@@ -91,7 +90,11 @@
                         }
                     });
                 },
-                minLength: 2
+                minLength: 2,
+                select: function(event, ui) {
+                    $('#name').val(ui.item.label);
+                    return false;
+                }
             });
         });
     </script>
