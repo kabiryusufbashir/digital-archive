@@ -5,14 +5,6 @@
 @endsection
 
 @section('page-section')
-    <!-- Search Box  -->
-    <div>
-        <form name="autocomplete-textbox" id="autocomplete-textbox" method="post" action="{{ route('search') }}" class="my-1 flex w-1/2 ml-auto">
-            @csrf
-            <input id="name" name="name" type="text" class="form-control py-3 px-10" placeholder="Search Document">
-            <input type="submit" class="mx-auto bg-green-800 py-2 px-3 text-white tracking-wider" value="Search" name="search_document_submit" id="search">
-        </form>
-    </div>
     <!-- App Stats -->
     <div class="grid grid-cols-3 gap-4 py-6 rounded-lg text-center">
         <div class="bg-white py-7 px-6 mr-4 text-gray-600 rounded">
@@ -67,35 +59,4 @@
             </a>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            $( "#name" ).autocomplete({
-                source: function(request, response) {
-                    $.ajax({
-                        url: siteUrl + '/' +"autocomplete",
-                        data: {
-                            term : request.term
-                        },
-                        dataType: "json",
-                            success: function(data){
-                                if (data.length > 0) {
-                                    var resp = $.map(data, function(obj){
-                                        return obj.name;
-                                    });
-                                    response(resp);
-                                }else{
-                                    response(['No Document Found']);
-                                }
-                            console.log(data)
-                        }
-                    });
-                },
-                minLength: 2,
-                select: function(event, ui) {
-                    $('#name').val(ui.item.label);
-                    return false;
-                }
-            });
-        });
-    </script>
 @endsection 

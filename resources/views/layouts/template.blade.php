@@ -107,6 +107,18 @@
             </div>
             <!-- Menu  -->
             <div id="appMenu">
+                <!-- Search Box  -->
+                <div class="text-lg text-black">
+                    @include('layouts.messages')
+                </div>
+                <!-- Search Box  -->
+                <div class="mb-6">
+                    <form name="autocomplete-textbox" id="autocomplete-textbox" method="post" action="{{ route('search') }}" class="my-1 flex lg:w-1/3 ml-auto" style="margin-right: 1%;">
+                        @csrf
+                        <input id="name" name="name" type="text" class="form-control py-3 px-3" placeholder="Search Document">
+                        <input type="submit" class="mx-auto bg-green-800 py-2 px-3 text-white tracking-wider" value="Search" name="search_document_submit" id="search">
+                    </form>
+                </div>
                 @yield('page-section')
             </div>
         </div>
@@ -151,6 +163,38 @@
                 })
             //End of Document
 
+        </script>
+        <script>
+            $(document).ready(function() {
+
+                $("#name").autocomplete({
+                    source: function(request, response) {
+                        $.ajax({
+                            url: siteUrl + '/' +"autocomplete",
+                            data: {
+                                term : request.term
+                            },
+                            dataType: "json",
+                                success: function(data){
+                                    if (data.length > 0) {
+                                        var resp = $.map(data, function(obj){
+                                            return obj.name;
+                                        });
+                                        response(resp);
+                                    }else{
+                                        response(['No Document Found']);
+                                    }
+                                console.log(data)
+                            }
+                        });
+                    },
+                    minLength: 2,
+                    select: function(event, ui) {
+                        $('#name').val(ui.item.label);
+                        return false;
+                    }
+                });
+            });
         </script>
     </body>
 </html>

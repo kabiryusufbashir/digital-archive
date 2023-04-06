@@ -90,7 +90,15 @@ class DocumentController extends Controller
     public function searchDocument(Request $request)
     {
         $doc = $request->name;
-        dd($doc);
+        
+        $check_doc = Document::where('name', $doc)->first();
+
+        if(!empty($check_doc)){
+            // dd($check_doc->id);
+            return redirect()->route('document-show', $check_doc->id);
+        }else{
+            return back()->with('error', ' Document not Found');
+        }
     }
 
     public function documents(){
