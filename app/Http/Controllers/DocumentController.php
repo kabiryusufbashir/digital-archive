@@ -74,11 +74,17 @@ class DocumentController extends Controller
     public function search(Request $request)
     {
 
-        $data = Document::select("name as value", "id")
-                    ->where('name', 'LIKE', '%'. $request->get('search'). '%')
-                    ->get();
+        $res = Document::select("name")->where("name","LIKE","%{$request->term}%")->get();
+        
+        if(count($res) > 0){
+            return response()->json($res);
+        }else{
+            $jsonString = '{"name": "Document Not Found"}';
+            $data = json_decode($jsonString, true);
+            return response()->json($data);
+        }
+
     
-        return response()->json($data);
     }
 
     public function documents(){

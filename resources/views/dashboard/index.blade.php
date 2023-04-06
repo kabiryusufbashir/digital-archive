@@ -7,8 +7,9 @@
 @section('page-section')
     <!-- Search Box  -->
     <div>
-        <form action="" class="my-1 flex w-1/2 ml-auto">
-            <input id="search-box" type="text" class="form-control py-3 px-10 rounded-tl-full rounded-bl-full" name="search_document" placeholder="Search Document" id="search_document">
+        <form name="autocomplete-textbox" id="autocomplete-textbox" method="post" action="" class="my-1 flex w-1/2 ml-auto">
+            @csrf
+            <input id="name" name="name" type="text" class="form-control py-3 px-10" placeholder="Search Document">
             <input type="submit" class="mx-auto bg-green-800 py-2 px-3 text-white tracking-wider" value="Search" name="search_document_submit" id="search">
         </form>
     </div>
@@ -66,67 +67,32 @@
             </a>
         </div>
     </div>
-    <script type="text/javascript">
-        var path = "{{ route('search') }}";
-        $("#search" ).autocomplete({
-            source: function(request,response ) {
-            $.ajax({
-                url: path,
-                type: 'GET',
-                dataType: "json",
-                data: {
-                    search: request.term
-                },
-                success: function( data ) {
-                    console.log('Yes')
-                    response( data );
-                }
-            });
-            },
-            select: function (event, ui) {
-            $('#search').val(ui.item.label);
-            console.log(ui.item); 
-            return false;
-            }
-        });
-    
-    </script>
     <script>
-        // let searchBox = document.getElementById('search-box');
-        // let searchResults = document.getElementById('search-results');
-
-
+        $(document).ready(function() {
+            $( "#name" ).autocomplete({
         
-        // searchBox.addEventListener('keyup', function () {
-            
-        //     const query = this.value;
-            
-        //     if(query.length > 2){
-        //         $.ajax({
-        //             url: `/search?query=${query}`,
-        //             method: 'GET',
-        //             dataType: 'json'
-        //             })
-        //             .then(function(data) {
-        //                 console.log(data);
-        //                 if(data.length > 0){
-        //                     data.forEach(doc => {
-        //                         const li = document.createElement('li');
-        //                         li.innerText = doc.name;
-        //                         searchResults.appendChild(li);
-        //                     })
-        //                 }else{
-        //                     searchResults.innerHTML = '';
-        //                     const li = document.createElement('li');
-        //                     li.innerText = 'Document Not Found';
-        //                     searchResults.appendChild(li);
-        //                 }
-        //             })
-        //             .catch(function(error) {
-        //                 console.error(error);
-        //             });
-        //     }    
-            
-        // });
+                source: function(request, response) {
+                    $.ajax({
+                        url: siteUrl + '/' +"autocomplete",
+                        data: {
+                            term : request.term
+                        },
+                        dataType: "json",
+                            success: function(data){
+                                if (data.length > 0) {
+                                    var resp = $.map(data, function(obj){
+                                        return obj.name;
+                                    });
+                                    response(resp);
+                                }else{
+                                    response(['No Document Found']);
+                                }
+                            console.log(data)
+                        }
+                    });
+                },
+                minLength: 2
+            });
+        });
     </script>
 @endsection 
