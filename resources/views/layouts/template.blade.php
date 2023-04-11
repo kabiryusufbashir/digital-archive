@@ -36,18 +36,18 @@
                     
                     <!-- Category  -->
                     <div id="categoryNav" class="py-4 border-b cursor-pointer flex justify-between px-6">
-                        <div>Category</div>
+                        <div>Manifest</div>
                         <div><i class="text-black  fas fa-building"></i></div>
                     </div>
                     <div id="categoryBody" class="hidden ml-4">
                         <a href="{{ route('add-categories') }}">
                             <div class="py-4 border-b cursor-pointer flex justify-between px-6">
-                                <div>Add Category</div>
+                                <div>Add Manifest</div>
                             </div>
                         </a>
                         <a href="{{ route('categories') }}">
                             <div class="py-4 border-b cursor-pointer flex justify-between px-6">
-                                <div>All Categories</div>
+                                <div>All Manifests</div>
                             </div>
                         </a>
                     </div>

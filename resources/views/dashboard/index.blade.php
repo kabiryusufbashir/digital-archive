@@ -16,7 +16,7 @@
                         </div>
                     </span>
                     <span class="text-sm">
-                        <div class="font-semibold mb-1">Categories</div>
+                        <div class="font-semibold mb-1">Manifests</div>
                         <div>
                             {{ $category_count }}
                         </div>

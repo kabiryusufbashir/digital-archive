@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('page-title')
-    <title>Category - Digital Archive</title>
+    <title>Manifest - Digital Archive</title>
 @endsection
 
 @section('page-section')
@@ -9,14 +9,14 @@
     <div class="w-full bg-white p-6 rounded-lg">
         @if(count($categories) > 0)
             <div class="pb-3 px-24">
-                <h2 class="text-center text-2xl">All Categories</h2>
+                <h2 class="text-center text-2xl">All Manifests</h2>
             </div>
             <div class="my-2">
                 <table class="w-full">
                     <thead class="border-b">
                         <!-- Main Columns  -->
                         <tr class="text-left whitespace-nowrap">
-                            <th>Category</th>
+                            <th>Manifest</th>
                             <th>Status</th>
                             @if(Auth::user()->category == 'Admin')
                                 <th>Action</th>
@@ -59,7 +59,7 @@
             </div>
         @else
             <div class="text-center text-2xl">
-                No Category Found <a style="color: blue;" href="{{ route('add-categories') }}">Click here to Add a category</a>
+                No Manifest Found <a style="color: blue;" href="{{ route('add-categories') }}">Click here to Add a Manifest</a>
             </div>
         @endif
         <div>

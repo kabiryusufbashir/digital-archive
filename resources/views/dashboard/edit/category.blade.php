@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('page-title')
-    <title>Category - Digital Archive</title>
+    <title>Manifest - Digital Archive</title>
 @endsection
 
 @section('page-section')
@@ -18,14 +18,14 @@
             @csrf
             @method('PATCH')
             <div>
-                <label for="name" class="text-lg font-medium">Category Name</label><br>
-                <input type="text" name="name" value="{{ $category->name }}" placeholder="Category Name" class="border-gray-300 rounded py-4 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                <label for="name" class="text-lg font-medium">Manifest Name</label><br>
+                <input type="text" name="name" value="{{ $category->name }}" placeholder="Manifest Name" class="border-gray-300 rounded py-4 px-6 w-full my-2 border-2 border-b focus:outline-none">
                 @error('name')
                 {{$message}}
                 @enderror
             </div>     
             <div>
-                <label for="status" class="text-lg font-medium">Category Status</label><br>
+                <label for="status" class="text-lg font-medium">Manifest Status</label><br>
                 <select type="text" name="status" value="{{old('status')}}" class="border-gray-300 rounded py-4 px-6 w-full my-2 border-2 border-b focus:outline-none">
                     @if($category->status == 'Active')
                         <option value="Active">Active</option>
@@ -40,7 +40,7 @@
                 @enderror
             </div>     
             <div class="text-center">
-                <button class="mx-auto bg-green-800 rounded w-full py-3 text-white tracking-wider">Update Category</button>
+                <button class="mx-auto bg-green-800 rounded w-full py-3 text-white tracking-wider">Update Manifest</button>
             </div>
         </form>
     </div>

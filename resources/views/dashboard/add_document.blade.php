@@ -7,25 +7,15 @@
 @section('page-section')
     <!-- Add Form  -->
     <div>
-        <div class="pb-3 px-24">
+        <div class="px-24">
             <h2 class="text-center text-2xl">Upload Document</h2>
         </div>
-        <div class="text-lg text-black">
-            @include('layouts.messages')
-        </div>
-        <form action="{{ route('add-document') }}" method="POST" class="grid grid-cols-2 gap-4 px-6 lg:px-8 py-8" enctype="multipart/form-data">
+        <form action="{{ route('add-document') }}" method="POST" class="grid grid-cols-2 gap-4 px-6 lg:px-8 py-4" enctype="multipart/form-data">
             @csrf
             <!-- First Column  -->
             <div class="bg-white p-6 rounded-lg">
                 <div>
-                    <label for="name">Name</label><br>
-                    <input type="text" name="name" value="{{old('name')}}" placeholder="Document Name" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
-                    @error('name')
-                    {{$message}}
-                    @enderror
-                </div>     
-                <div>
-                    <label for="status">Category</label><br>
+                    <label for="status">Manifest</label><br>
                     <select type="text" name="category" value="{{old('category')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
                         <option></option>
                             @foreach($categories as $category)
@@ -35,7 +25,46 @@
                     @error('status')
                     {{$message}}
                     @enderror
+                </div>
+                <div>
+                    <label for="name">Name</label><br>
+                    <input type="text" name="name" value="{{old('name')}}" placeholder="Document Name" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                    @error('name')
+                    {{$message}}
+                    @enderror
                 </div>     
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="billing_month">Billing Month</label><br>
+                        <input type="date" name="billing_month" value="{{old('billing_month')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        @error('billing_month')
+                        {{$message}}
+                        @enderror
+                    </div>     
+                    <div>
+                        <label for="received_date">Received Date</label><br>
+                        <input type="date" name="received_date" value="{{old('received_date')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        @error('received_date')
+                        {{$message}}
+                        @enderror
+                    </div>     
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="amount_billed">Amount Billed</label><br>
+                        <input type="text" name="amount_billed" value="{{old('amount_billed')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        @error('amount_billed')
+                        {{$message}}
+                        @enderror
+                    </div>     
+                    <div>
+                        <label for="amount_paid">Amount Paid</label><br>
+                        <input type="text" name="amount_paid" value="{{old('amount_paid')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        @error('amount_paid')
+                        {{$message}}
+                        @enderror
+                    </div>     
+                </div>
                 <div>
                     <label for="status">Status</label><br>
                     <select type="text" name="status" value="{{old('status')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">

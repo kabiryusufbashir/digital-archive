@@ -50,7 +50,7 @@ class CategoryController extends Controller
             Category::where('id', $id)->update([
                 'status' => 'Not Active',
             ]);
-            return redirect()->route('categories')->with('success', 'Category Deleted');
+            return redirect()->route('categories')->with('success', 'Manifest Deleted');
         }catch(Exception $e){
             return redirect()->route('categories')->with('error', 'Please try again... '.$e);
         }
@@ -78,7 +78,7 @@ class CategoryController extends Controller
                     'name' => $data['name'],
                     'status' => $data['status'],
                 ]);
-                return redirect()->route('categories')->with('success', 'Category Updated');
+                return redirect()->route('categories')->with('success', 'Manifest Updated');
             }catch(Exception $e){
                 return back()->with('error', 'Please try again... '.$e);
             }

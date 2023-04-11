@@ -12,6 +12,10 @@ class Document extends Model
     protected $fillable = [
         'name',
         'category_id',
+        'billing_month',
+        'received_date',
+        'amount_billed',
+        'amount_paid',
         'status',
         'user_id',
     ];

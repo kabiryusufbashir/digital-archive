@@ -22,6 +22,10 @@ class DocumentController extends Controller
         $data = $request->validate([
             'name' => ['required'],
             'category' => ['required'],
+            'billing_month' => ['required'],
+            'received_date' => ['required'],
+            'amount_billed' => ['required'],
+            'amount_paid' => ['required'],
             'status' => ['required'],
             'doc_path.*' => ['required', 'mimes:pdf,doc,docx,txt,jpeg,jpg,png,'],
         ]);
@@ -36,6 +40,10 @@ class DocumentController extends Controller
                 $document = new Document([
                     'name' => $data['name'],
                     'category_id' => $data['category'],
+                    'billing_month' => $data['billing_month'],
+                    'received_date' => $data['received_date'],
+                    'amount_billed' => $data['amount_billed'],
+                    'amount_paid' => $data['amount_paid'],
                     'status' => $data['status'],
                     'user_id' => $upload_by,
                 ]);
