@@ -18,10 +18,11 @@ class UserController extends Controller
             'name' => ['required'],
             'category' => ['required'],
             'status' => ['required'],
+            'password' => ['required'],
         ]);
 
         $name = $data['name'];
-        $password = Hash::make('1234567890');
+        $password = Hash::make($data['password']);
 
         $check = User::where('name', $name)->get();
         

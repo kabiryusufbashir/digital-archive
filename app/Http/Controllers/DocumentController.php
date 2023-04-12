@@ -31,7 +31,7 @@ class DocumentController extends Controller
         ]);
 
         $name = $data['name'];
-        $upload_by = Auth::user()->id;
+        $upload_by = Auth::user()->name;
 
         $check = Document::where('name', $name)->get();
         

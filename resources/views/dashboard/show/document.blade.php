@@ -9,7 +9,7 @@
     <div class="w-full p-6 rounded-lg">
         <div class="pb-3 px-24">
             <h2 class="text-center text-2xl">{{ $document->name}} </h2>
-            <h2 class="text-center text-2xl">Total Files: {{ count($document_contents) }}</h2>
+            <h2 class="text-center text-2xl">Total Pages: {{ count($document_contents) }}</h2>
         </div>
         <div class="grid grid-cols-2 gap-4">
             @foreach($document_contents as $x => $doc)

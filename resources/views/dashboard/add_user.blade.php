@@ -14,12 +14,19 @@
         <div class="text-lg text-black">
             @include('layouts.messages')
         </div>
-        <form action="{{ route('add-user') }}" method="POST" class="px-6 lg:px-8 py-8">
+        <form action="{{ route('add-user') }}" method="POST" class="px-6 lg:px-8 py-2">
             @csrf
             <div>
                 <label for="name" class="text-lg font-medium">Name</label><br>
                 <input type="text" name="name" value="{{old('name')}}" placeholder="Username" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
                 @error('name')
+                {{$message}}
+                @enderror
+            </div>     
+            <div>
+                <label for="password" class="text-lg font-medium">Password</label><br>
+                <input type="password" name="password" value="{{old('password')}}" placeholder="Password" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                @error('password')
                 {{$message}}
                 @enderror
             </div>     

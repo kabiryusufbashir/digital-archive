@@ -29,6 +29,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:web');
+Route::get('/password', [DashboardController::class, 'password'])->name('password')->middleware('auth:web');
+Route::post('/password/change', [DashboardController::class, 'passwordChange'])->name('change-password')->middleware('auth:web');
 Route::get('/category', [CategoryController::class, 'categories'])->name('categories')->middleware('auth:web');
 Route::get('/users', [UserController::class, 'users'])->name('users')->middleware('auth:web');
 Route::get('/archive', [DocumentController::class, 'documents'])->name('documents')->middleware('auth:web');
