@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
-use App\Models\loginRecords;
+use App\Models\LoginRecords;
 
 class LoginController extends Controller
 {
@@ -29,7 +29,7 @@ class LoginController extends Controller
                             $request->session()->regenerate();
                             $user_id = User::select('id')->where('name', $request->username)->first();
                             try{
-                                loginRecords::create([
+                                LoginRecords::create([
                                     'user_id' => $user_id->id,
                                 ]);
                     
