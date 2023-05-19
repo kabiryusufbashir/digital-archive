@@ -18,6 +18,9 @@ class Document extends Model
         'amount_paid',
         'status',
         'user_id',
+        'hospital_code',
+        'hcp_state',
+        'no_of_claims',
     ];
 
 

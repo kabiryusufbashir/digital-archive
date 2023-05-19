@@ -16,7 +16,7 @@
             <div class="bg-white p-6 rounded-lg">
                 <div>
                     <label for="status">Manifest</label><br>
-                    <select type="text" name="category" value="{{old('category')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                    <select type="text" name="category" value="{{old('category')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                         <option></option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -28,22 +28,45 @@
                 </div>
                 <div>
                     <label for="name">Name</label><br>
-                    <input type="text" name="name" value="{{old('name')}}" placeholder="Document Name" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                    <input type="text" name="name" value="{{old('name')}}" placeholder="Document Name" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                     @error('name')
                     {{$message}}
                     @enderror
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <label for="hospital_code">Hospital Code</label><br>
+                        <input placeholder="Hospital Code" type="text" name="hospital_code" value="{{old('hospital_code')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        @error('hospital_code')
+                        {{$message}}
+                        @enderror
+                    </div>     
+                    <div>
+                        <label for="hcp_state">HCP state</label><br>
+                        <input placeholder="HCP State" type="text" name="hcp_state" value="{{old('hcp_state')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        @error('hcp_state')
+                        {{$message}}
+                        @enderror
+                    </div>     
+                    <div>
+                        <label for="no_of_claims">No of Claims</label><br>
+                        <input placeholder="No of Claims" type="text" name="no_of_claims" value="{{old('no_of_claims')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        @error('no_of_claims')
+                        {{$message}}
+                        @enderror
+                    </div>     
                 </div>     
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label for="billing_month">Billing Month</label><br>
-                        <input type="date" name="billing_month" value="{{old('billing_month')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        <input placeholder="Billing Month" type="date" name="billing_month" value="{{old('billing_month')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                         @error('billing_month')
                         {{$message}}
                         @enderror
                     </div>     
                     <div>
                         <label for="received_date">Received Date</label><br>
-                        <input type="date" name="received_date" value="{{old('received_date')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        <input type="date" name="received_date" value="{{old('received_date')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                         @error('received_date')
                         {{$message}}
                         @enderror
@@ -52,29 +75,18 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label for="amount_billed">Amount Billed</label><br>
-                        <input type="text" name="amount_billed" value="{{old('amount_billed')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        <input placeholder="Amount Billed" type="text" name="amount_billed" value="{{old('amount_billed')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                         @error('amount_billed')
                         {{$message}}
                         @enderror
                     </div>     
                     <div>
                         <label for="amount_paid">Amount Paid</label><br>
-                        <input type="text" name="amount_paid" value="{{old('amount_paid')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        <input placeholder="Amount Paid" type="text" name="amount_paid" value="{{old('amount_paid')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                         @error('amount_paid')
                         {{$message}}
                         @enderror
                     </div>     
-                </div>
-                <div>
-                    <label for="status">Status</label><br>
-                    <select type="text" name="status" value="{{old('status')}}" class="border-gray-300 rounded py-3 px-6 w-full my-2 border-2 border-b focus:outline-none">
-                        <option></option>
-                        <option value="Active">Active</option>
-                        <option value="Not Active">Not Active</option>
-                    </select>
-                    @error('status')
-                    {{$message}}
-                    @enderror
                 </div>
             </div>
             <!-- Second Column  -->
@@ -87,8 +99,19 @@
             
                 <div id="addDocument" class="bg-blue-800 text-white p-2 rounded float-right mb-3 text-xs cursor-pointer">Add Document + </div>
                 <br><br>
+                <div>
+                    <label for="status">Status</label><br>
+                    <select type="text" name="status" value="{{old('status')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                        <option></option>
+                        <option value="Active">Active</option>
+                        <option value="Not Active">Not Active</option>
+                    </select>
+                    @error('status')
+                    {{$message}}
+                    @enderror
+                </div>
                 <div class="text-center">
-                    <button class="mx-auto bg-green-800 rounded w-full py-3 text-white tracking-wider">Upload Document</button>
+                    <button class="mx-auto bg-green-800 rounded w-full py-2 text-white tracking-wider">Upload Document</button>
                 </div>
             </div>
         </form>

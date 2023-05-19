@@ -31,7 +31,7 @@
                         @foreach($documents as $item)
                             <tr class="text-left border-b">
                                 <td>
-                                    <a href="{{ route('document-show', $item->id) }}">
+                                    <a target="_blank" href="{{ route('document-show', $item->id) }}">
                                         {{ $item->name }}
                                     </a>
                                 </td>
@@ -42,7 +42,7 @@
                                     {{ $item->status }}
                                 </td>
                                 <td>
-                                    {{ $item->postedBy($item->user_id) }}
+                                    {{ $item->user_id }}
                                 </td>
                                 <td>
                                     {{ $item->dateFormat($item->created_at) }}

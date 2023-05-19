@@ -19,14 +19,14 @@
             @method('PATCH')
             <div>
                 <label for="name">Name</label><br>
-                <input type="text" name="name" value="{{ $document->name }}" placeholder="Document Name" class="border-gray-300 rounded py-4 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                <input type="text" name="name" value="{{ $document->name }}" placeholder="Document Name" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                 @error('name')
                 {{$message}}
                 @enderror
             </div>     
             <div>
                 <label for="category">Category</label><br>
-                <select name="category" value="{{old('category')}}" class="border-gray-300 rounded py-4 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                <select name="category" value="{{old('category')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                     <option value="{{ $document->category_id }}">{{ $document->docCategory($document->category_id) }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -35,10 +35,33 @@
                 @error('status')
                 {{$message}}
                 @enderror
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                    <label for="hospital_code">Hospital Code</label><br>
+                    <input type="text" name="hospital_code" value="{{ $document->hospital_code }}" placeholder="Hospital Code" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                    @error('hospital_code')
+                    {{$message}}
+                    @enderror
+                </div>
+                <div>
+                    <label for="hcp_state">HCP State</label><br>
+                    <input type="text" name="hcp_state" value="{{ $document->hcp_state }}" placeholder="HCP State" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                    @error('hcp_state')
+                    {{$message}}
+                    @enderror
+                </div>
+                <div>
+                    <label for="no_of_claims">No of Claims</label><br>
+                    <input type="text" name="no_of_claims" value="{{ $document->no_of_claims }}" placeholder="No of Claims" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                    @error('no_of_claims')
+                    {{$message}}
+                    @enderror
+                </div>
             </div>     
             <div>
                 <label for="status">Status</label><br>
-                <select type="text" name="status" value="{{old('status')}}" class="border-gray-300 rounded py-4 px-6 w-full my-2 border-2 border-b focus:outline-none">
+                <select type="text" name="status" value="{{old('status')}}" class="border-gray-300 rounded py-2 px-6 w-full my-2 border-2 border-b focus:outline-none">
                     @if($document->status == 'Active')
                         <option value="Active">Active</option>
                         <option value="Not Active">Not Active</option>
