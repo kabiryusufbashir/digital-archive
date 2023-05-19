@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Document;
 use App\Models\Documentimage;
-use App\Models\Activityondocument;
+use App\Models\ActivityOnDocument;
 
 class DocumentController extends Controller
 {
@@ -194,7 +194,7 @@ class DocumentController extends Controller
             ]);
 
             try{
-                $stamp = new Activityondocument([
+                $stamp = new ActivityOnDocument([
                     'user_id' => $upload_by,
                     'document_id' => $id,
                     'activity_carried' => $activity_on_document,
